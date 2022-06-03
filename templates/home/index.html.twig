@@ -1,17 +1,29 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Accueil{% endblock %} {% block
+body %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{#------------
+--- slider ---
+------------#}
 
-{% block body %}
+<section>
+    <div class="container-fluid">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('img/agate-g737a3da84_1280.jpg')}}" class="d-block w-100" alt="..." />
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('img/gemstones-gbe477592d_1280.jpg')}}" class="d-block w-100" alt="..." />
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('img/stones-g6851f416e_1280.jpg')}}" class="d-block w-100" alt="..." />
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('img/wwwbabyamberteethingcouk-gb44a1fe51_1280.jpg')}}" class="d-block w-100" alt="..." />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/projets_symfony/reve_de_gemme/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/projets_symfony/reve_de_gemme/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}
