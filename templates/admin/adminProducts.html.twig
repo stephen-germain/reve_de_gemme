@@ -1,0 +1,11 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Gestion des produits{% endblock %}
+
+{% block body %}
+    <h1>Gestion des produits</h1>
+
+    {% for product in products %}
+        {{ product.name}}
+    {% endfor %}
+{% endblock %}
