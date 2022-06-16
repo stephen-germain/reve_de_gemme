@@ -1,0 +1,25 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Gestion des expositions{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Gestion des expositions</h1>
+
+    {% for exposition in expositions %}
+        <p>{{ exposition.adresse }}</p>
+        <P> {{ exposition.city }}</p>
+        <p>{{ exposition.zipCode }}</p>
+        <p>{{ exposition.day ? exposition.day|date('d/m/y') }}</p>
+        <p>{{ exposition.beginAt ? exposition.beginAt|date('H:i') }}</p>
+        <p>{{ exposition.endAt ? exposition.endAt|date('H:i') }}</p>
+        <a href="{{ path('update_expositions', {id:exposition.id}) }}">Modifier</a>
+        <a href="{{ path('delete_expositions', {id:exposition.id}) }}">Supprimer</a>
+
+    {% endfor %}
+
+    <a href="{{ path('create_expositions')}}">Ajouter une nouvelle date</a>
+  
+</div>
+{% endblock %}

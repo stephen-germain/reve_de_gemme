@@ -72,4 +72,37 @@ class ProductsRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function findFourFirst()
+    {
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.id = :val')
+            ->setParameter('val', '0')
+            ->orderBy('f.id', 'ASC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findFourAfter()
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.id > :val')
+            ->setParameter('val', '4')
+            ->orderBy('a.id', 'ASC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findFourLast()
+    {
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.id > :val')
+            ->setParameter('val', '8')
+            ->orderBy('l.id', 'ASC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult();
+    }
 }

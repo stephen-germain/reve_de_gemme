@@ -3,36 +3,63 @@
 {% block title %}Gestion des produits{% endblock %}
 
 {% block body %}
-    <h1>Gestion des produits</h1>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-10">
+            <div class="row p-5">
+                <div class="col-4">
+                    <h1>Gestion des produits</h1>
+                </div>
+            </div>
+            <div class="row p-5">
+                <div class="col-md-5">
+                    <h3>Bracelet</h3>
+                    {% for bracelet in bracelets %}
+                    <div class="card col-3" style="width: 18rem;">
+                        <img src="{{ asset('img/' ~ bracelet.image)}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ bracelet.name}}</h5>
+                            <p class="card-text">{{ bracelet.description}}</p>
+                            <a href="{{ path('update_products', {id:bracelet.id}) }}" class="btn btn-primary">modifier</a>
+                            <a href="{{ path('delete_products', {id:bracelet.id}) }}" class="btn btn-danger">supprimer</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row p-5">
+                <h3>Collier</h3>
+                {% for collier in colliers %}
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ asset('img/' ~ collier.image)}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ collier.name}}</h5>
+                        <p class="card-text">{{ collier.description}}</p>
+                        <a href="{{ path('update_products', {id:collier.id}) }}" class="btn btn-primary">modifier</a>
+                        <a href="{{ path('delete_products', {id:collier.id}) }}" class="btn btn-danger">supprimer</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row p-5">
+                <h3>Pierre</h3>
+                {% for pierre in pierres %}
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ asset('img/' ~ pierre.image)}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ pierre.name}}</h5>
+                        <p class="card-text">{{ pierre.description}}</p>
+                        <a href="{{ path('update_products', {id:pierre.id}) }}" class="btn btn-primary">modifier</a>
+                        <a href="{{ path('delete_products', {id:pierre.id}) }}" class="btn btn-danger">supprimer</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            div.row
+            <a href="{{ path('create_products')}}">Ajouter produit</a>
 
-    <h3>Bracelet</h3>
-    {% for bracelet in bracelets %}
-        {{ bracelet.name}}
-        {{ bracelet.description}}
-    <img src="{{ asset('img/' ~ bracelet.image)}}" alt="">
-    <a href="{{ path('update_products', {id:bracelet.id}) }}">modifier</a>
-    <a href="{{ path('delete_products', {id:bracelet.id}) }}">supprimer</a>
-    {% endfor %}
-    
-
-    <h3>Collier</h3>
-    {% for collier in colliers %}
-        {{ collier.name}}
-        {{ collier.description}}
-    <img src="{{ asset('img/' ~ collier.image)}}" alt="">
-    <a href="{{ path('update_products', {id:collier.id}) }}">modifier</a>
-    <a href="{{ path('delete_products', {id:collier.id}) }}">supprimer</a>
-    {% endfor %}
-    
-
-    <h3>Pierre</h3>
-    {% for pierre in pierres %}
-        {{ pierre.name}}
-        {{ pierre.description}}
-    <img src="{{ asset('img/' ~ pierre.image)}}" alt="">
-    <a href="{{ path('update_products', {id:pierre.id}) }}">modifier</a>
-    <a href="{{ path('delete_products', {id:pierre.id}) }}">supprimer</a>
-    {% endfor %}
-    <a href="{{ path('create_products')}}">Ajouter produit</a>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

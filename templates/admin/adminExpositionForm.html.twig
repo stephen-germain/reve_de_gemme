@@ -1,0 +1,23 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Ajout des date d'expostion{% endblock %}
+
+{% block body %}
+    <h1>Ajout des dates d'exposition</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-10 p-3">
+                {{form_start(formExposition)}}
+                {{form_end(formExposition)}}
+            </div>
+        </div>
+    </div>
+    {# <script>
+        $(document).ready(function(){
+            $('.js-datepicker').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+        });
+    </script> #}
+{% endblock %}
