@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Categories;
 use App\Entity\Products;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -38,13 +40,26 @@ class ProductFormType extends AbstractType
                     'placeholder' => "image.jpg"
                 ]
             ])
-            ->add('categorie', ChoiceType::class,[
-                'choices' => [
-                    'Bracelet' => '1',
-                    'Collier' => '2', 
-                    'Pierre' => '3'
-                ]
+            ->add('categories', EntityType::class,[
+                'class' => Categories::class,
+                'choice_label' => 'name',
+                'expanded' => false,
             ])
+            // ->add('categories', ChoiceType::class,[
+            //     'choices' => [
+            //         'Bracelet' => [
+            //             'Baroque' => 4,
+            //             'Boules' => 5,
+            //             'Test bracelet' => 8,
+            //         ],
+            //         'Collier' => [
+            //             'Test collier' => 6,
+            //         ],
+            //         'Pierre' => [
+            //             'Test pierre' => 7,
+            //         ]
+            //     ]
+            // ])
             ->add('save', SubmitType::class, [
                 'label' => 'Valider'
             ])

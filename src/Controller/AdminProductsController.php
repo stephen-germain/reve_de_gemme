@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Categories;
 use App\Entity\Products;
 use App\Form\ProductFormType;
+use App\Repository\CategoriesRepository;
 use App\Repository\ProductsRepository;
+use Doctrine\ORM\Mapping\OrderBy;
 use Doctrine\Persistence\ManagerRegistry;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,19 +18,20 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminProductsController extends AbstractController
 {
-    // public function __construct( ManagerRegistry $doctrine){}
-
     #[Route('/admin/produits', name: 'admin_products')]
-    public function index(ProductsRepository $productsRepository): Response
+    public function index(CategoriesRepository $categories, ProductsRepository $products): Response
     {
-        $bracelet = $productsRepository->findOneByCategorie('1');
-        $collier = $productsRepository->findOneByCategorie('2');
-        $pierre = $productsRepository->findOneByCategorie('3');
+        $bracelet = $categories->findAllByCategory('Bracelets', '1');
+        $collier = $categories->findAllByCategory('Colliers', '2');
+        $pierre = $categories->findAllByCategory('Pierres', '3');
+
+        $product = $products->findAll();
 
         return $this->render('admin/adminProducts.html.twig', [
             'bracelets' => $bracelet,
             'colliers' => $collier,
             'pierres' => $pierre,
+            'products' => $product,
         ]);
     }
 
@@ -87,29 +91,28 @@ class AdminProductsController extends AbstractController
         $product = $productsRepository->find($id);
 
         $oldImg = $product->getImage();
-        $oldImgPath = $this->getParameter('images_produits').'/'.$oldImg;
+        $oldImgPath = $this->getParameter('images_produits') . '/' . $oldImg;
 
         $form = $this->createForm(ProductFormType::class, $product);
         $form->handleRequest($request);
-        
+
         $img = $form['image']->getData();
 
-        if($form->isSubmitted()){
-            if($form->isValid()){
-                if($oldImg != NULL){
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                if ($oldImg != NULL) {
                     unlink($oldImgPath);
                 }
                 $nomImg = md5(uniqid());
                 $extensionImg = $img->guessExtension();
-                $newImg = $nomImg.'.'.$extensionImg;
+                $newImg = $nomImg . '.' . $extensionImg;
 
-                try{
+                try {
                     $img->move(
                         $this->getParameter('images_produits'),
                         $newImg
                     );
-                }
-                catch(Exception $e){
+                } catch (Exception $e) {
                     $this->addFlash(
                         'danger',
                         'Une erreur est survenue lors de la modification de l\'image'
@@ -121,13 +124,12 @@ class AdminProductsController extends AbstractController
                 $manager = $doctrine->getManager();
                 $manager->persist($product);
                 $manager->flush();
-        
+
                 $this->addFlash(
                     'success',
                     'Le produit à bien été modifié'
                 );
-            }
-            else{
+            } else {
                 $this->addFlash(
                     'danger',
                     'Une erreur est survenue'
@@ -140,7 +142,6 @@ class AdminProductsController extends AbstractController
         return $this->render('admin/adminProductForm.html.twig', [
             'formProduit' => $form->createView(),
         ]);
-      
     }
 
     #[Route('/admin/produits/supprime{id}', name: 'delete_products')]

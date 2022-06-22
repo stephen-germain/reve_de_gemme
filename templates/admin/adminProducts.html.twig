@@ -13,49 +13,68 @@
             </div>
             <div class="row p-5">
                 <div class="col-md-5">
-                    <h3>Bracelet</h3>
                     {% for bracelet in bracelets %}
-                    <div class="card col-3" style="width: 18rem;">
-                        <img src="{{ asset('img/' ~ bracelet.image)}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ bracelet.name}}</h5>
-                            <p class="card-text">{{ bracelet.description}}</p>
-                            <a href="{{ path('update_products', {id:bracelet.id}) }}" class="btn btn-primary">modifier</a>
-                            <a href="{{ path('delete_products', {id:bracelet.id}) }}" class="btn btn-danger">supprimer</a>
+                        {% if bracelet.parent == NULL %}
+                            <h3>{{ bracelet.name }}</h3>
+                        {% else %} 
+                            <div class="card col-3" style="width: 18rem;">
+                                {% for product in bracelet.products %}
+                                    <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="..."> 
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ product.name }}</h5>
+                                        <p class="card-text">{{ product.description}}</p>
+                                        <a href="{{ path('update_products', {id:product.id}) }}" class="btn btn-primary">modifier</a>
+                                        <a href="{{ path('delete_products', {id:product.id}) }}" class="btn btn-danger">supprimer</a>
+                                {% endfor %}
+                            </div>
                         </div>
-                    </div>
+                        {% endif %}
+                    {% endfor %} 
+                </div>
+            </div>
+            <div class="row p-5">
+                <div class="col-md-5">
+                    {% for collier in colliers %}
+                        {% if collier.parent == NULL %}
+                            <h3>{{ collier.name }}</h3>
+                        {% else %} 
+                            <div class="card col-3" style="width: 18rem;">
+                                {% for product in collier.products %}
+                                    <img src="{{ asset('img/' ~ produtct.image)}}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ product.name }}</h5>
+                                        <p class="card-text">{{ product.description}}</p>
+                                        <a href="{{ path('update_products', {id:product.id}) }}" class="btn btn-primary">modifier</a>
+                                        <a href="{{ path('delete_products', {id:product.id}) }}" class="btn btn-danger">supprimer</a>
+                                {% endfor %}
+                            </div> 
+                        </div>
+                        {% endif %}
+                    {% endfor %} 
+                </div>
+            </div>
+            <div class="row p-5">
+                <div class="col-md-5">
+                    {% for pierre in pierres %}
+                        {% if pierre.parent == NULL %}
+                            <h3>{{ pierre.name }}</h3>
+                        {% else %} 
+                            <div class="card col-3" style="width: 18rem;">
+                                {% for product in pierre.products %}
+                                    <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="...">
+                                    <div class="card-body">  
+                                        <h5 class="card-title">{{ product.name }}</h5>
+                                        <p class="card-text">{{ product.description}}</p>
+                                        <a href="{{ path('update_products', {id:product.id}) }}" class="btn btn-primary">modifier</a>
+                                        <a href="{{ path('delete_products', {id:product.id}) }}" class="btn btn-danger">supprimer</a>
+                                {% endfor %}      
+                            </div>
+                        </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
-            <div class="row p-5">
-                <h3>Collier</h3>
-                {% for collier in colliers %}
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ asset('img/' ~ collier.image)}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ collier.name}}</h5>
-                        <p class="card-text">{{ collier.description}}</p>
-                        <a href="{{ path('update_products', {id:collier.id}) }}" class="btn btn-primary">modifier</a>
-                        <a href="{{ path('delete_products', {id:collier.id}) }}" class="btn btn-danger">supprimer</a>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            <div class="row p-5">
-                <h3>Pierre</h3>
-                {% for pierre in pierres %}
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ asset('img/' ~ pierre.image)}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ pierre.name}}</h5>
-                        <p class="card-text">{{ pierre.description}}</p>
-                        <a href="{{ path('update_products', {id:pierre.id}) }}" class="btn btn-primary">modifier</a>
-                        <a href="{{ path('delete_products', {id:pierre.id}) }}" class="btn btn-danger">supprimer</a>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            div.row
+            
             <a href="{{ path('create_products')}}">Ajouter produit</a>
 
         </div>

@@ -22,8 +22,12 @@ class Products
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
 
-    #[ORM\Column(type: 'integer')]
-    private $categorie;
+    #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $categories;
+
+    // #[ORM\Column(type: 'integer')]
+    // private $categorie;
 
     public function getId(): ?int
     {
@@ -66,14 +70,14 @@ class Products
         return $this;
     }
 
-    public function getCategorie(): ?int
+    public function getCategories(): ?Categories
     {
-        return $this->categorie;
+        return $this->categories;
     }
 
-    public function setCategorie(int $categorie): self
+    public function setCategories(?Categories $categories): self
     {
-        $this->categorie = $categorie;
+        $this->categories = $categories;
 
         return $this;
     }
