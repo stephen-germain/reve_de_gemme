@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Categories;
 use App\Entity\Products;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -41,7 +42,14 @@ class ProductFormType extends AbstractType
                 ]
             ])
             ->add('categories', EntityType::class,[
+                'label' => 'Sous-catégories',
                 'class' => Categories::class,
+                'query_builder' => function (EntityRepository $er){
+                    return $er->createQueryBuilder('p')
+                    ->andWhere('p.type = 2', 'p.parent = 1')
+                    ->orWhere('p.type = 2', 'p.parent = 2')
+                    ->orWhere('p.type = 2', 'p.parent = 3');
+                },
                 'choice_label' => 'name',
                 'expanded' => false,
             ])

@@ -1,0 +1,198 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Gestion des catégories
+{% endblock %}
+
+{% block body %}
+
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+
+		.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #F1F1F1;
+		}
+
+		.tab button {
+			background-color: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			font-size: 17px;
+		}
+
+		.tab button:hover {
+			background-color: #ddd;
+		}
+
+		.tab button.active {
+			background-color: #ccc;
+		}
+
+		.tabcontent {
+			display: none;
+			padding: 6px 12px;
+			border: 1px solid #ccc;
+			border-top: none;
+		}
+
+		table {
+			border-collapse: collapse;
+			width: 100%
+		}
+		td,
+		th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+	</style>
+
+	<div class="example-wrapper">
+		<h1>Gestion des catégories</h1>
+
+		<table>
+			<tr>
+				<th>Catégories</th>
+				<th>Sous-catégories</th>
+				<th>Actions</th>
+			</tr>
+			<tr>
+				<td>Bracelet</td>
+				{% for bracelet in bracelets %}
+					{% if bracelet.parent != NULL %}
+						<td>{{ bracelet.name }}</td>
+						<td>
+							<a href="{{ path('update_categories', {id:bracelet.id} )}}">Modifier</a>
+							<a href="{{ path('delete_categories', {id:bracelet.id})}}">Supprimer</a>
+						</td>
+					{% endif %}
+				{% endfor %}
+			</tr>
+            <tr>
+				<td>Colliers</td>
+				{% for collier in colliers %}
+					{% if collier.parent != NULL %}
+						<td>{{ collier.name }}</td>
+						<td>
+							<a href="{{ path('update_categories', {id:collier.id} )}}">Modifier</a>
+							<a href="{{ path('delete_categories', {id:collier.id} )}}">Supprimer</a>
+						</td>
+					{% endif %}
+				{% endfor %}
+			</tr>
+            <tr>
+				<td>Minéraux</td>
+				{% for pierre in pierres %}
+					{% if pierre.parent != NULL %}
+						<td>{{ pierre.name }}</td>
+						<td>
+							<a href="{{ path('update_categories', {id:pierre.id} )}}">Modifier</a>
+							<a href="{{ path('delete_categories', {id:pierre.id} )}}">Supprimer</a>
+						</td>
+					{% endif %}
+				{% endfor %}
+			</tr>
+		</table>
+
+		{# <div class="tab">
+		        {% for bracelet in bracelets %}
+		            {% if bracelet.parent == null %}
+		                <button class="tablinks" onclick="openCity(event, '{{ bracelet.name }}')">{{ bracelet.name}}</button>
+		            {% endif %}
+		        {% endfor %}
+		    </div>
+		    {% for bracelet in bracelets %}
+		        {% if bracelet.parent == NULL %}
+		            <div id="{{ bracelet.name}}" class="tabcontent"> 
+		        {% endif %}
+		        {% if bracelet.parent != NULL %}
+		                <p>{{ bracelet.name }}</p>
+		            </div>
+		        {% endif %}
+		    {% endfor %} #}
+
+		{# {% for collier in colliers %}
+		        <div class="tab">
+		            {% if collier.parent == null %}
+		                <button class="tablinks" onclick="openCity(event, '{{ collier.name }}')">{{ collier.name}}</button>
+		            {% endif %}
+		        </div>
+		        <div id="{{ collier.name}}" class="tabcontent"> 
+		            {% if collier.type == '2' %}
+		                <p>{{ collier.name }}</p>
+		            {% endif %}
+		        </div>
+		    {% endfor %} #}
+
+		{# {% for pierre in pierres %}
+		        <div class="tab">
+		            {% if pierre.parent == null %}
+		                <button class="tablinks" onclick="openCity(event, '{{ pierre.name }}')">{{ pierre.name}}</button>
+		            {% endif %}
+		        </div>
+		        <div id="{{ pierre.name}}" class="tabcontent"> 
+		            {% if pierre.type == '2' %}
+		                <p>{{ pierre.name }}</p>
+		            {% endif %}
+		        </div>
+		    {% endfor %} #}
+		{# <h3>Catégories<h3>
+		    {% for categorie in categories %}
+		        {% if categorie.parent == null %}
+		
+		            <p>{{ categorie.name}}
+		            a href="{{ path('update_expositions', {id:categorie.id}) }}">Modifier</a>
+		            <a href="{{ path('delete_expositions', {id:categorie.id}) }}">Supprimer</a>
+		        {% endif %}
+		    {% endfor %}
+		
+		    <h3>Sous-catégories<h3>
+		    {% for categorie in categories %}
+		        {% if categorie.parent != NULL %}
+		            <p>{{ categorie.name}}</p>
+		            <a href="{{ path('update_expositions', {id:categorie.id}) }}">Modifier</a>
+		            <a href="{{ path('delete_expositions', {id:categorie.id}) }}">Supprimer</a>
+		        {% endif %}
+		        
+		    {% endfor %} #}<a href="{{ path('create_categories')}}"> Ajouter une nouvelle catégorie</a>
+
+	</div>
+
+	{# {% block javascripts %}
+		<script>
+			function openCity(evt, cityName) {
+var i,
+tabcontent,
+tablinks;
+tabcontent = document.getElementsByClassName("tabcontent");
+for (let i = 0; i < tabcontent.length; i++) {
+tabcontent[i].style.display = "none";
+}
+tablinks = document.getElementsByClassName("tablinks");
+for (let i = 0; i < tablinks.length; i++) {
+tablinks[i].className = tablinks[i].className.replace("active", "");
+}
+document.getElementById(cityName).style.display = "block";
+evt.currentTarget.className += "active";
+}
+		</script>
+	{% endblock %} #}
+
+{% endblock %}

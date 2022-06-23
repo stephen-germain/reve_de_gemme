@@ -26,9 +26,6 @@ class Products
     #[ORM\JoinColumn(nullable: false)]
     private $categories;
 
-    // #[ORM\Column(type: 'integer')]
-    // private $categorie;
-
     public function getId(): ?int
     {
         return $this->id;
