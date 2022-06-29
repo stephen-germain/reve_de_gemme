@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-light">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="{{ path('home')}}">Reve de Gemmes</a>
+		<a class="navbar-brand" href="{{ path('home')}}">Rêves de Gemmes</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -10,15 +10,16 @@
 					<a class="nav-link active" aria-current="page" href="{{ path('home')}}">Accueil</a>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Voir les produits</a>
+					<a class="nav-link dropdown-toggle" href="{{ path('app_all_products')}}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Produits</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<li><a href="" class="dropdown-item">Catégorie bracelet</a></li>
-						<li><a href="" class="dropdown-item">Catégorie collier</a></li>
-						<li><a href="" class="dropdown-item">Catégorie minéraux</a></li>
+						{# <li><a href="{{ path('app_all_products')}}" class="dropdown-item">Tous les produits</a></li> #}
+						<li><a href="{{ path('wristbands_products')}}" class="dropdown-item">Catégorie bracelet</a></li>
+						<li><a href="{{ path('necklaces_products')}}" class="dropdown-item">Catégorie collier</a></li>
+						<li><a href="{{ path('minerals_products')}}" class="dropdown-item">Catégorie minéraux</a></li>
 					</ul>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Agenda</a>
+					<a class="nav-link" href="{{ path('app_all_expositions')}}">Agenda</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Contact</a>

@@ -2,14 +2,16 @@
 
 namespace App\Controller;
 
+use Exception;
 use App\Entity\Categories;
 use App\Form\CategorieFormType;
 use App\Repository\CategoriesRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class AdminCategoriesController extends AbstractController
 {
@@ -35,8 +37,28 @@ class AdminCategoriesController extends AbstractController
         $form = $this->createForm(CategorieFormType::class, $categorie);
         $form->handleRequest($request);
 
+        $img = $form['image']->getData();
+
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
+
+                $nomImg = md5(uniqid());
+                $extensionImg = $img->guessExtension();
+                $newImg = $nomImg . '.' . $extensionImg;
+
+                try {
+                    $img->move(
+                        $this->getParameter('images_produits'),
+                        $newImg
+                    );
+                } catch (FileException $e) {
+                    $this->addFlash(
+                        'danger',
+                        'Une erreur est survenue lors de l\'importation de l\'image'
+                    );
+                }
+
+                $categorie->setImage($newImg);
 
                 $type = 2;
                 $categorie->setType($type);
@@ -66,11 +88,38 @@ class AdminCategoriesController extends AbstractController
     {
         $categorie = $categoriesRepository->find($id);
 
+        $oldImg = $categorie->getImage();
+        $oldImgPath = $this->getParameter('images_produits') . '/' . $oldImg;
+
         $form = $this->createForm(CategorieFormType::class, $categorie);
         $form->handleRequest($request);
 
+        $img = $form['image']->getData();
+
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
+
+                if ($oldImg != NULL) {
+                    unlink($oldImgPath);
+                }
+                $nomImg = md5(uniqid());
+                $extensionImg = $img->guessExtension();
+                $newImg = $nomImg . '.' . $extensionImg;
+
+                try {
+                    $img->move(
+                        $this->getParameter('images_produits'),
+                        $newImg
+                    );
+                } catch (Exception $e) {
+                    $this->addFlash(
+                        'danger',
+                        'Une erreur est survenue lors de la modification de l\'image'
+                    );
+                }
+
+                $categorie->setImage($newImg);
+
                 
                 $manager = $doctrine->getManager();
                 $manager->persist($categorie);

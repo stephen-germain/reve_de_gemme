@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -32,6 +33,14 @@ class CategorieFormType extends AbstractType
                 },
                 'choice_label' => 'name',
                 'expanded' => false,
+            ])
+            ->add('image', FileType::class, [
+                'required' => false,
+                'mapped' => false,
+                'label' => 'Image de la catégorie', 
+                'attr' => [
+                    'placeholder' => 'image.jpg',
+                ]
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Valider'

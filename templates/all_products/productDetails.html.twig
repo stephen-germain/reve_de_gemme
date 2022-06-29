@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}détail du produit{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-10">
+            <div class="row p-5">
+                <div class="col-4">
+                    <h1>Détail du produit</h1>
+                </div>
+            </div>
+            <div class="row p-5">
+                <div class="col-md-5">
+                    <div class="card col-3" style="width: 18rem;">
+                        <img src="{{ asset('img/' ~ produits.image)}}" class="card-img-top" alt="{{ produits.name }}">
+                        <div class="card-body">  
+                            <h5 class="card-title">{{ produits.name }}</h5>
+                            <p class="card-text">{{ produits.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

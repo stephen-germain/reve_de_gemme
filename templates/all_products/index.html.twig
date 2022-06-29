@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les produits{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+ <div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-10">
+            <div class="row p-5">
+                <div class="col-4">
+                    <h1>Tous les produits</h1>
+                </div>
+            </div>
+            <div class="row p-5">
+                <div class="col-md-5">
+                    {% for bracelet in bracelets %}
+                        {% if bracelet.parent == NULL %}
+                            <h2>{{ bracelet.name }}</h2>
+                        {% else %} 
+                            <div class="card col-3" style="width: 18rem;">
+                                <h3>{{ bracelet.name }}</h3>
+                                {% for product in bracelet.products %}
+                                    <a href="{{ path('app_product_details', {id:product.id})}}">
+                                        <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="..."> 
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ product.name }}</h5>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endfor %} 
+                </div>
+            </div>
+            <div class="row p-5">
+                <div class="col-md-5">
+                    {% for collier in colliers %}
+                        {% if collier.parent == NULL %}
+                            <h3>{{ collier.name }}</h3>
+                        {% else %} 
+                            <div class="card col-3" style="width: 18rem;">
+                                <h3>{{ collier.name }}</h3>
+                                {% for product in collier.products %}
+                                    <a href="{{ path('app_product_details', {id:product.id})}}">
+                                        <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ product.name }}</h5>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div> 
+                        {% endif %}
+                    {% endfor %} 
+                </div>
+            </div>
+            <div class="row p-5">
+                <div class="col-md-5">
+                    {% for pierre in pierres %}
+                        {% if pierre.parent == NULL %}
+                            <h3>{{ pierre.name }}</h3>
+                        {% else %} 
+                            <div class="card col-3" style="width: 18rem;">
+                                <h3>{{ pierre.name }}</h3>
+                                {% for product in pierre.products %}
+                                    <a href="{{ path('app_product_details', {id:product.id})}}">
+                                        <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="...">
+                                        <div class="card-body">  
+                                            <h5 class="card-title">{{ product.name }}</h5>
+                                        </div>
+                                    </a>
+                                {% endfor %}      
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

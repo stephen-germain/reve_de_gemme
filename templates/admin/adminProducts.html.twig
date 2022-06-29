@@ -8,7 +8,7 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 <div class="container">
-    <div class="row justify-content-md-center">
+    {# <div class="row justify-content-md-center">
         <div class="col-10">
             <div class="row p-5">
                 <div class="col-4">
@@ -30,9 +30,9 @@
                                         <p class="card-text">{{ product.description}}</p>
                                         <a href="{{ path('update_products', {id:product.id}) }}" class="btn btn-primary">modifier</a>
                                         <a href="{{ path('delete_products', {id:product.id}) }}" class="btn btn-danger">supprimer</a>
+                                    </div>
                                 {% endfor %}
                             </div>
-                        </div>
                         {% endif %}
                     {% endfor %} 
                 </div>
@@ -52,9 +52,9 @@
                                         <p class="card-text">{{ product.description}}</p>
                                         <a href="{{ path('update_products', {id:product.id}) }}" class="btn btn-primary">modifier</a>
                                         <a href="{{ path('delete_products', {id:product.id}) }}" class="btn btn-danger">supprimer</a>
+                                     </div> 
                                 {% endfor %}
-                            </div> 
-                        </div>
+                            </div>
                         {% endif %}
                     {% endfor %} 
                 </div>
@@ -74,9 +74,9 @@
                                         <p class="card-text">{{ product.description}}</p>
                                         <a href="{{ path('update_products', {id:product.id}) }}" class="btn btn-primary">modifier</a>
                                         <a href="{{ path('delete_products', {id:product.id}) }}" class="btn btn-danger">supprimer</a>
+                                    </div>
                                 {% endfor %}      
                             </div>
-                        </div>
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -85,6 +85,37 @@
             <a href="{{ path('create_products')}}">Ajouter produit</a>
 
         </div>
+    </div> #}
+
+    <div class="row py-5">
+        <div class="col-md-12">
+            <h1>Gestion des produits</h1>
+        </div>
+    </div>
+    <div class="row">
+        {% for bracelet in bracelets %}
+            {% if bracelet.parent == NULL %}
+                <h2>{{ bracelet.name }}</h2>
+            {% else %} 
+        <div class="col-md-4 p-3">
+            <div class="card m-1" style="width: 18rem;">
+                {% for product in bracelet.products %}
+                    <img src="{{ asset('img/' ~ product.image) }}" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description}}</p>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{ path('delete_products', {id:product.id}) }}" class="card-link">Supprimer</a>
+                        <a href="{{ path('update_products', {id:product.id}) }}"class="card-link">Modifier</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+            {% endif %}
+        {% endfor %}
+
+        <a href="{{ path('create_products')}}">Ajouter produit</a>
     </div>
 </div>
 
