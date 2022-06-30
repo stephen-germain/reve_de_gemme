@@ -70,7 +70,7 @@ class AllProductsController extends AbstractController
         // $bracelet = $categoriesRepository->findAllByCategory('bracelets', '1');
         $collier = $categoriesRepository->find($id);
 
-        return $this->render('all_products/wristbandsDetails.html.twig', [
+        return $this->render('all_products/necklacesDetails.html.twig', [
             'colliers' => $collier,
         ]);
     }
@@ -81,7 +81,7 @@ class AllProductsController extends AbstractController
         // $bracelet = $categoriesRepository->findAllByCategory('bracelets', '1');
         $pierre = $categoriesRepository->find($id);
 
-        return $this->render('all_products/wristbandsDetails.html.twig', [
+        return $this->render('all_products/mineralsDetails.html.twig', [
             'pierres' => $pierre,
         ]);
     }

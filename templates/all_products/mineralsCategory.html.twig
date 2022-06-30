@@ -40,7 +40,7 @@
             </div> #}
             {% for pierre in pierres %}
                 {% if pierre.parent != NULL %}
-                    <a href="{{ path('wristbands_details', {id:pierre.id})}}">
+                    <a href="{{ path('minerals_details', {id:pierre.id})}}">
                         <div class="card bg-dark text-white">
                             <img src="{{asset('img/' ~ pierre.image )}}" alt="" class="card-img">
                             <div class="card-img-overlay">

@@ -3,20 +3,31 @@
 {% block title %}Les bracelets par catégories{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
+<section id="bannierDetail" class="position-relative dark-overlay py-3 py-lg-7 overflow-hidden" style="background-image: url('{{asset('img/' ~ bracelets.image )}}')">
+  
+    <div class="hero-content pb-5 pt-5 text-center">
+        <h1>{{bracelets.name}}</h1>
+    </div>
+</section>
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-10">
-            <div class="row p-5">
-                <div class="col-4">
-                    <h1>{{bracelets.name}}</h1>
-                </div>
+            <div class="row">
+                {% for product in bracelets.products %}
+                    <div class="col-12 col-md-4">
+                        <a href="{{ path('app_product_details', {id:product.id})}}">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="{{ product.name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
-            <div class="row p-5">
+         
+            {# <div class="row p-5">
                 <div class="col-md-5">
                     <div class="card col-3" style="width: 18rem;">
                         {% for product in bracelets.products %}
@@ -29,7 +40,7 @@
                         {% endfor %}
                     </div>
                 </div>
-            </div>
+            </div> #}
         </div>
     </div>
 </div>
