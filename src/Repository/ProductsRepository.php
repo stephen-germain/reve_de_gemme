@@ -63,15 +63,15 @@ class ProductsRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
-    public function findOneByCategorie($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.categorie = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    // public function findOneByCategorie($produit)
+    // {
+    //     return $this->createQueryBuilder('p')
+    //         ->andWhere('p.categories = :val')
+    //         ->setParameter('val', $produit)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
 
     public function findFourFirst()
     {

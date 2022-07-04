@@ -86,4 +86,14 @@ class CategoriesRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function findOneCategorie()
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.type = :val')
+            ->setParameter('val', '2')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

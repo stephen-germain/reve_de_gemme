@@ -4,40 +4,32 @@
 
 {% block body %}
 
-<div class="container">
-    <div class="row justify-content-md-center">
-        <div class="col-10">
-            {# <div class="row">
-                {% for product in pierres.products %}
-                    <div class="col-12 col-md-4">
-                        <a href="{{ path('app_product_details', {id:product.id})}}">
-                            <div class="card" style="width: 18rem;">
-                                <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="{{ product.name }}">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ product.name }}</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                {% endfor %}
-            </div> #}
-
-            
-            <div class="row p-5">
-                <div class="col-md-5">
-                    <div class="card col-3" style="width: 18rem;">
-                        {% for product_minerals in pierres.products %}
-                            <a href="{{ path('app_product_details', {id:product_minerals.id})}}">
-                                <img src="{{ asset('img/' ~ product_minerals.image)}}" class="card-img-top" alt="..."> 
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ product_minerals.name }}</h5>
-                                </div>
-                            </a>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
+<section id="bannierDetail" class="position-relative dark-overlay py-3 py-lg-7 overflow-hidden" style="background-image: url('{{asset('img/' ~ pierres.image )}}')">
+  
+    <div class="hero-content pb-5 pt-5 text-center">
+        <h1>{{pierres.name}}</h1>
     </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        {% for product in pierres.products %}
+            <div class="col-6 col-md-4 col-lg-3 py-5">
+                <a href="{{ path('app_product_details', {id:product.id})}}" class="text-decoration-none text-dark">
+                    <div class="card card-product" style="width: auto;">
+                        <div class="ratio ratio-4x3">
+                            <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center fs-6 fw-light">{{ product.name }}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <a href="{{ path('minerals_products')}}" class="btn btn-primary">retour</a>  
+    
 </div>
 {% endblock %}

@@ -4,3 +4,13 @@
     background-size: cover;
     background-position: center center;
 }
+
+.card-product{
+    transition: all 0.5s; 
+}
+.card-product:hover{
+    box-shadow: 0 8px 16px rgb(0 0 0 / 20%),
+                0 16px 32px rgb(0 0 0 / 20%);
+    transform: scale(1.1, 1.1);
+}
+

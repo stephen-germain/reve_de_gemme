@@ -27,6 +27,17 @@
                     </div>
                 </div>
             </div>
+
+            {% for item in detailProduit %}
+                {% if (item.parent.id == '1') and (produits.categories.id == item.id)%}
+                    <a href="{{ path('wristbands_details', {id:produits.categories.id})}}" class="btn btn-primary">retour bracelet</a>
+                {% elseif (item.parent.id == '2') and (produits.categories.id == item.id) %}
+                    <a href="{{ path('necklaces_details', {id:produits.categories.id})}}" class="btn btn-success">retour collier</a>
+                {% elseif (item.parent.id == '3') and (produits.categories.id == item.id)%}
+                    <a href="{{ path('minerals_details', {id:produits.categories.id})}}" class="btn btn-danger">retour pierre</a>
+                {% endif %}
+            {% endfor %}
+            
         </div>
     </div>
 </div>
