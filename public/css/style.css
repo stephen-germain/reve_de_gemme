@@ -1,4 +1,8 @@
-#bannierDetail{
+#homeHeader{
+    height: 80vh;
+}
+
+.bannierDetail{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;

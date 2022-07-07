@@ -16,27 +16,6 @@
                     <h1>Les bracelets</h1>
                 </div>
             </div>
-            {# <div class="row p-5">
-                <div class="col-md-5">
-                    {% for bracelet in bracelets %}
-                        {% if bracelet.parent == NULL %}
-                            <h2>{{ bracelet.name }}</h2>
-                        {% else %} 
-                            <div class="card col-3" style="width: 18rem;">
-                                <h3>{{ bracelet.name }}</h3>
-                                {% for product in bracelet.products %}
-                                    <a href="{{ path('app_product_details', {id:product.id})}}">
-                                        <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="..."> 
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ product.name }}</h5>
-                                        </div>
-                                    </a>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    {% endfor %} 
-                </div>
-            </div> #}
             {% for bracelet in bracelets %}
                 {% if bracelet.parent != NULL %}
                     <a href="{{ path('wristbands_details', {id:bracelet.id})}}">

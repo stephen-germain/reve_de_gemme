@@ -76,9 +76,9 @@ class ProductsRepository extends ServiceEntityRepository
     public function findFourFirst()
     {
         return $this->createQueryBuilder('f')
-            ->andWhere('f.id = :val')
+            ->andWhere('f.id > :val')
             ->setParameter('val', '0')
-            ->orderBy('f.id', 'ASC')
+            ->orderBy('f.id', 'DESC')
             ->setMaxResults(4)
             ->getQuery()
             ->getResult();
@@ -88,8 +88,9 @@ class ProductsRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.id > :val')
-            ->setParameter('val', '4')
-            ->orderBy('a.id', 'ASC')
+            ->setParameter('val', '0')
+            ->orderBy('a.id', 'DESC')
+            ->setFirstResult(4)
             ->setMaxResults(4)
             ->getQuery()
             ->getResult();
@@ -99,8 +100,9 @@ class ProductsRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('l')
             ->andWhere('l.id > :val')
-            ->setParameter('val', '8')
-            ->orderBy('l.id', 'ASC')
+            ->setParameter('val', '0')
+            ->orderBy('l.id', 'DESC')
+            ->setFirstResult(8)
             ->setMaxResults(4)
             ->getQuery()
             ->getResult();

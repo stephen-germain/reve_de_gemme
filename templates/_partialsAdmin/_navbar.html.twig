@@ -1,4 +1,4 @@
-<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px;" id="mySidebar">
+{# <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px;" id="mySidebar">
 	<button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
 	<a href="{{ path('admin')}}" class="w3-bar-item w3-button">Accueil</a>
 	<a href="#" class="w3-bar-item w3-button">Mes informations</a>
@@ -6,7 +6,7 @@
 	<a href="{{ path('admin_products')}}" class="w3-bar-item w3-button">Ajouter un produit</a>
 	<a href="{{ path('app_admin_expositions')}}" class="w3-bar-item w3-button">Ajouter un rendez-vous</a>
 	<a href="{{ path('home')}}" class="w3-bar-item w3-button">Retour à l'accueil</a>
-	<a href="#" class="w3-bar-item w3-button">Me déconnecter</a>
+	<a href="{{ path('app_logout')}}" class="w3-bar-item w3-button">Me déconnecter</a>
 </div>
 
 <div class="w3-main" style="margin-left:200px">
@@ -28,4 +28,52 @@ document.getElementById("mySidebar").style.display = "block";
 function w3_close() {
 document.getElementById("mySidebar").style.display = "none";
 }
-</script>
+</script> #}
+
+{# <nav class="navbar bg-light" aria-label="light offcanvas navbar">
+	<div class="container-fluid">
+		<a href="#" class="navbar-brand">Bienvenue sur l'administration</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLight" aria-controls="offcanvasNavbarLight">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbarLight" aria-labelledby="offcanvasNavbarLightLabel1">
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title" id="offcanvasNavbarLightLabel1">Offcanvas</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
+			<div class="offcanvas-body">
+				<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+					<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">home</a></li>
+					<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">home</a></li>
+					<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">home</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</nav> #}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Offcanvas navbar large">
+	<div class="container-fluid">
+		<a href="#" class="navbar-brand">Bienvenue sur l'administration</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="offcanvas offcanvas-end text-white bg-dark" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbarLabel">
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title" id="offcanvasNavbar2Label">Menu</h5>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="CLose"></button>
+			</div>
+			<div class="offcanvas-body">
+				<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+					<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ path('admin')}}">Accueil</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page" href="#">Mes informations</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page" href="{{ path('app_admin_categories')}}">Gérer les catégories</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page" href="{{ path('admin_products')}}">Gérer les produits</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page" href="{{ path('app_admin_expositions')}}">Gérer l'agenda</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page" href="{{ path('home')}}">Retour à l'accueil</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page" href="{{ path('app_logout')}}">Me déconnecter</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</nav>

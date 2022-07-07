@@ -3,10 +3,16 @@
 {% block title %}Les bracelets par catégories{% endblock %}
 
 {% block body %}
-<section id="bannierDetail" class="position-relative dark-overlay py-3 py-lg-7 overflow-hidden" style="background-image: url('{{asset('img/' ~ bracelets.image )}}')">
+<section class="position-relative dark-overlay py-3 py-lg-7 overflow-hidden bannierDetail" style="background-image: url('{{asset('img/' ~ bracelets.image )}}')">
   
     <div class="hero-content pb-5 pt-5 text-center">
         <h1>{{bracelets.name}}</h1>
+        <nav style="--bs-breadcrumb-divider: '>'; text-start" aria-label="breadcrumb">
+            <ol>
+                <li class="breadcrumb-item"><a href="{{ path('home')}}">Accueil</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ bracelets.name }}</li>
+            </ol>
+        </nav>
     </div>
 </section>
 <div class="container">

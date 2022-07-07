@@ -68,23 +68,36 @@
 		<h1>Gestion des catégories</h1>
 
 		<table>
+			<thead>
 			<tr>
 				<th>Catégories</th>
 				<th>Sous-catégories</th>
 				<th>Actions</th>
 			</tr>
+			</theead>
+
+			{% for bracelet in bracelets %}
+			<tbody>
 			<tr>
-				<td>Bracelet</td>
-				{% for bracelet in bracelets %}
-					{% if bracelet.parent != NULL %}
-						<td>{{ bracelet.name }}</td>
+				{% if bracelet.parent == NULL %}
+					<td>{{ bracelet.name }}</td>
+
+				{% elseif  bracelet.parent != NULL %}
+					<td>{{ bracelet.name }}</td>
+				{% endif %}
 						<td>
 							<a href="{{ path('update_categories', {id:bracelet.id} )}}">Modifier</a>
-							<a href="{{ path('delete_categories', {id:bracelet.id})}}">Supprimer</a>
+							<a href="{{ path('delete_categories', {id:bracelet.id} )}}" onclick="return confirm('Voulez-vous supprimer cette catégories?')">
+								<button type="button" class="btn btn-danger">
+									Supprimer
+								</button>
+							</a>
 						</td>
-					{% endif %}
 				{% endfor %}
 			</tr>
+			</tbody>
+		</table>
+		<table>
             <tr>
 				<td>Colliers</td>
 				{% for collier in colliers %}
@@ -92,7 +105,11 @@
 						<td>{{ collier.name }}</td>
 						<td>
 							<a href="{{ path('update_categories', {id:collier.id} )}}">Modifier</a>
-							<a href="{{ path('delete_categories', {id:collier.id} )}}">Supprimer</a>
+							<a href="{{ path('delete_categories', {id:collier.id} )}}" onclick="return confirm('Voulez-vous supprimer cette catégories?')">
+								<button type="button" class="btn btn-danger">
+									Supprimer
+								</button>
+							</a>
 						</td>
 					{% endif %}
 				{% endfor %}
@@ -104,7 +121,11 @@
 						<td>{{ pierre.name }}</td>
 						<td>
 							<a href="{{ path('update_categories', {id:pierre.id} )}}">Modifier</a>
-							<a href="{{ path('delete_categories', {id:pierre.id} )}}">Supprimer</a>
+							<a href="{{ path('delete_categories', {id:pierre.id} )}}" onclick="return confirm('Voulez-vous supprimer cette catégories?')">
+								<button type="button" class="btn btn-danger">
+									Supprimer
+								</button>
+							</a>
 						</td>
 					{% endif %}
 				{% endfor %}

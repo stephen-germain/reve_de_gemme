@@ -63,4 +63,16 @@ class ExpositionsRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function findLastFive()
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.id > :val')
+            ->setParameter('val', '0')
+            ->orderBy('e.id', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
