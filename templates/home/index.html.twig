@@ -26,48 +26,68 @@
 {#--------------
 --- CAROUSEL ---
 --------------#}
-
-<div class="container">
-    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="row">
-                    {% for firstProduct in firstProducts %}
-                        <div class="col-12 col-md-3">
-                            <img src="{{ asset('img/' ~ firstProduct.image)}}" class="d-block w-100" alt="{{ firstProduct.name }}">
-                        </div>
-                    {% endfor %}
+<section class="m-5">
+    <div class="container">
+        <h3>Les derniers produits</h3>
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        {% for firstProduct in firstProducts %}
+                            <div class="col-12 col-md-3">
+                                <a href="{{ path('app_product_details', {id:firstProduct.id})}}">
+                                    {# <img src="{{ asset('img/' ~ firstProduct.image)}}" class="d-block w-100 img-fluid" alt="{{ firstProduct.name }}"> #}
+                                    <figure class="figure">
+                                        <img src="{{ asset('img/' ~ firstProduct.image)}}" class="figure-img img-fluid rounded imgCarousel" alt="{{ firstProduct.name }}">
+                                        <figcaption class="figure-caption">{{ firstProduct.name }}</figcaption>
+                                    </figure>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        {% for nextProduct in nextProducts %}
+                            <div class="col-12 col-md-3">
+                                <a href="{{ path('app_product_details', {id:nextProduct.id})}}">
+                                    {# <img src="{{ asset('img/' ~ nextProduct.image )}}" class="d-block w-100 img-fluid" alt="{{ nextProduct.name }}"> #}
+                                    <figure class="figure">
+                                        <img src="{{ asset('img/' ~ nextProduct.image)}}" class="figure-img img-fluid rounded imgCarousel" alt="{{ nextProduct.name }}">
+                                        <figcaption class="figure-caption">{{ nextProduct.name }}</figcaption>
+                                    </figure>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        {% for lastProduct in lastProducts %}
+                            <div class="col-12 col-md-3">
+                                <a href="{{ path('app_product_details', {id:lastProduct.id})}}">
+                                    {# <img src="{{ asset('img/' ~ lastProduct.image )}}" class="d-block w-100 img-fluid" alt="{{ lastProduct.name }}"> #}
+                                    <figure class="figure">
+                                        <img src="{{ asset('img/' ~ lastProduct.image)}}" class="figure-img img-fluid rounded imgCarousel" alt="{{ lastProduct.name }}">
+                                        <figcaption class="figure-caption">{{ lastProduct.name }}</figcaption>
+                                    </figure>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="row">
-                    {% for nextProduct in nextProducts %}
-                        <div class="col-12 col-md-3">
-                            <img src="{{ asset('img/' ~ nextProduct.image )}}" class="d-block w-100" alt="{{ nextProduct.name }}">
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="row">
-                    {% for lastProduct in lastProducts %}
-                        <div class="col-12 col-md-3">
-                            <img src="{{ asset('img/' ~ lastProduct.image )}}" class="d-block w-100" alt="{{ lastProduct.name }}">
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
     </div>
-</div>
+</section>
 
 {#---------------
 ---  ---

@@ -1,6 +1,21 @@
+/***********
+*** HOME ***
+***********/
+
 #homeHeader{
     height: 80vh;
 }
+.imgCarousel{
+    max-height: 15em;
+    min-height: 15em;
+    max-width: 19em;
+    min-width: 19em;
+    object-fit: cover;
+}
+
+/**********************
+*** SOUS-CATEGORIES ***
+**********************/
 
 .bannierDetail{
     background-repeat: no-repeat;
