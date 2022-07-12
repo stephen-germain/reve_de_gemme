@@ -7,13 +7,19 @@
   
     <div class="hero-content pb-5 pt-5 text-center">
         <h1>{{bracelets.name}}</h1>
-        <nav style="--bs-breadcrumb-divider: '>'; text-start" aria-label="breadcrumb">
-            <ol>
-                <li class="breadcrumb-item"><a href="{{ path('home')}}">Accueil</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ bracelets.name }}</li>
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="text-center text-white">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('home')}}" class="text-decoration-none text-white">Accueil</a></li>
+                {% for categorie in braceletCategory %}
+                    {% if categorie.type == 1 %}
+                        <li class="breadcrumb-item"><a href="{{ path('wristbands_products')}}" class="text-decoration-none text-white">{{ categorie.name }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                <li class="breadcrumb-item active text-white" aria-current="page">{{ bracelets.name }}</li>
             </ol>
         </nav>
     </div>
+    {{ dump() }}
 </section>
 <div class="container">
     <div class="row">

@@ -5,17 +5,29 @@
 #homeHeader{
     height: 80vh;
 }
+/* #carouselNewProduct{
+    height: 500px;
+} */
 .imgCarousel{
-    max-height: 15em;
-    min-height: 15em;
+    max-height: 17em;
+    min-height: 17em;
     max-width: 19em;
     min-width: 19em;
     object-fit: cover;
 }
+#carouselExampleDark .carousel-control-prev{
+    left: -8%;
+}
+#carouselExampleDark .carousel-control-next{
+    right: -8%;
+}
+#productsHome .productImg{
+    height: 680px;
+}
 
-/**********************
-*** SOUS-CATEGORIES ***
-**********************/
+/******************************
+*** SOUS-CATEGORIES DETAILS ***
+******************************/
 
 .bannierDetail{
     background-repeat: no-repeat;
@@ -23,7 +35,9 @@
     background-size: cover;
     background-position: center center;
 }
-
+.breadcrumb-item::before{
+    color: #ffffff!important;
+}
 .card-product{
     transition: all 0.5s; 
 }

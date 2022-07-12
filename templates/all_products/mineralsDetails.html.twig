@@ -8,6 +8,17 @@
   
     <div class="hero-content pb-5 pt-5 text-center">
         <h1>{{pierres.name}}</h1>
+         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="text-center text-white">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('home')}}" class="text-decoration-none text-white">Accueil</a></li>
+                {% for categorie in pierreCategory %}
+                    {% if categorie.type == 1 %}
+                        <li class="breadcrumb-item"><a href="{{ path('minerals_products')}}" class="text-decoration-none text-white">{{ categorie.name }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                <li class="breadcrumb-item active text-white" aria-current="page">{{ pierres.name }}</li>
+            </ol>
+        </nav>
     </div>
 </section>
 

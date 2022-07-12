@@ -15,13 +15,11 @@ class HomeController extends AbstractController
         $firstProducts = $productsRepository->findFourFirst();
         $nextProducts = $productsRepository->findFourAfter();
         $lastProducts = $productsRepository->findFourLast();
-        // $product = $productsRepository->findAll();
 
         return $this->render('home/index.html.twig', [
             'firstProducts' => $firstProducts,
             'nextProducts' => $nextProducts,
             'lastProducts' => $lastProducts,
-            // 'products' => $product,
         ]);
     }
 }

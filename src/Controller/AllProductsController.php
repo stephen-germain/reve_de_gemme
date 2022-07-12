@@ -56,33 +56,36 @@ class AllProductsController extends AbstractController
     #[Route('/produits/bracelets/{id}', name: 'wristbands_details')]
     public function viewWristbandsDetails(CategoriesRepository $categoriesRepository, $id): Response
     {
-        // $bracelet = $categoriesRepository->findAllByCategory('bracelets', '1');
+        $braceletCategory = $categoriesRepository->findAllByCategory('bracelets', '1');
         $bracelet = $categoriesRepository->find($id);
 
         return $this->render('all_products/wristbandsDetails.html.twig', [
             'bracelets' => $bracelet,
+            'braceletCategory' => $braceletCategory,
         ]);
     }
 
     #[Route('/produits/collier/{id}', name: 'necklaces_details')]
     public function viewNecklacesDetails(CategoriesRepository $categoriesRepository, $id): Response
     {
-        // $bracelet = $categoriesRepository->findAllByCategory('bracelets', '1');
+        $collierCategory = $categoriesRepository->findAllByCategory('colliers', '2');
         $collier = $categoriesRepository->find($id);
 
         return $this->render('all_products/necklacesDetails.html.twig', [
             'colliers' => $collier,
+            'collierCategory' => $collierCategory,
         ]);
     }
 
     #[Route('/produits/mineraux/{id}', name: 'minerals_details')]
     public function viewMineralsDetails(CategoriesRepository $categoriesRepository, $id): Response
     {
-        // $bracelet = $categoriesRepository->findAllByCategory('bracelets', '1');
+        $pierreCategory = $categoriesRepository->findAllByCategory('pierres', '3');
         $pierre = $categoriesRepository->find($id);
 
         return $this->render('all_products/mineralsDetails.html.twig', [
             'pierres' => $pierre,
+            'pierreCategory' => $pierreCategory,
         ]);
     }
 }

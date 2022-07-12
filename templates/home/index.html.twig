@@ -26,18 +26,19 @@
 {#--------------
 --- CAROUSEL ---
 --------------#}
-<section class="m-5">
-    <div class="container">
+
+<section id="carouselNewProduct"class="p-5">
+    {# <div class="container"> #}
         <h3>Les derniers produits</h3>
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide h-100 p-4" data-bs-ride="carousel">
+            <div class="carousel-inner h-100">
+                <div class="carousel-item active h-100">
+                    <div class="row h-100">
                         {% for firstProduct in firstProducts %}
                             <div class="col-12 col-md-3">
                                 <a href="{{ path('app_product_details', {id:firstProduct.id})}}">
                                     {# <img src="{{ asset('img/' ~ firstProduct.image)}}" class="d-block w-100 img-fluid" alt="{{ firstProduct.name }}"> #}
-                                    <figure class="figure">
+                                    <figure class="figure h-100">
                                         <img src="{{ asset('img/' ~ firstProduct.image)}}" class="figure-img img-fluid rounded imgCarousel" alt="{{ firstProduct.name }}">
                                         <figcaption class="figure-caption">{{ firstProduct.name }}</figcaption>
                                     </figure>
@@ -46,13 +47,13 @@
                         {% endfor %}
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="row">
+                <div class="carousel-item h-100">
+                    <div class="row h-100">
                         {% for nextProduct in nextProducts %}
                             <div class="col-12 col-md-3">
                                 <a href="{{ path('app_product_details', {id:nextProduct.id})}}">
                                     {# <img src="{{ asset('img/' ~ nextProduct.image )}}" class="d-block w-100 img-fluid" alt="{{ nextProduct.name }}"> #}
-                                    <figure class="figure">
+                                    <figure class="figure h-100">
                                         <img src="{{ asset('img/' ~ nextProduct.image)}}" class="figure-img img-fluid rounded imgCarousel" alt="{{ nextProduct.name }}">
                                         <figcaption class="figure-caption">{{ nextProduct.name }}</figcaption>
                                     </figure>
@@ -61,13 +62,13 @@
                         {% endfor %}
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="row">
+                <div class="carousel-item h-100">
+                    <div class="row h-100">
                         {% for lastProduct in lastProducts %}
                             <div class="col-12 col-md-3">
                                 <a href="{{ path('app_product_details', {id:lastProduct.id})}}">
                                     {# <img src="{{ asset('img/' ~ lastProduct.image )}}" class="d-block w-100 img-fluid" alt="{{ lastProduct.name }}"> #}
-                                    <figure class="figure">
+                                    <figure class="figure h-100">
                                         <img src="{{ asset('img/' ~ lastProduct.image)}}" class="figure-img img-fluid rounded imgCarousel" alt="{{ lastProduct.name }}">
                                         <figcaption class="figure-caption">{{ lastProduct.name }}</figcaption>
                                     </figure>
@@ -86,26 +87,57 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-12 align-self-center text-center p-3">
+                <a href="#" class="text-black border border-black py-3 px-2 text-decoration-none text-center">Voir les produits</a>
+            </div>
+        </div>
+    {# </div> #}
 </section>
 
 {#---------------
----  ---
+---  PRODUCTS ---
 ---------------#}
 
-<section>
-    <div class="container">
+<section id="productsHome">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-6 border border-primary py-5" style="background-image: url('img/7c324a63d3763d5f31df29c66b645899.jpg' )">
-                
+            <div class="col-12 order-2 col-md-6 order-md-1 py-5" style="background-color: #f6f3ef"> 
+                <div class="row h-100">
+                    <div class="col-6 m-auto text-center">
+                        <a href="#" class="text-decoration-none">
+                            <img src="img/e9088301b340ef0916dd5da4111c2eb5.jpg" class="img-fluid" alt="">
+                            <p>Je suis un titre</p>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="col-12 col-md-6 border border-primary py-5 position-relative dark-overlay py-3 py-lg-7 overflow-hidden bannierDetail" style="background-image: url('img/agate-g737a3da84_1280.jpg' )">
-                
+            <div class="col-12 order-1 col-md-6 order-md-2 py-5 bannierDetail productImg" style="background-image: url('img/agate-g737a3da84_1280.jpg' )">
+                 <div class="row h-100">
+                    <div class="col-12 m-auto text-center p-5">
+                        <a href="{{ path('wristbands_products')}}" class="text-decoration-none text-white"><h3>Bracelets</h3></a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-6 border border-primary py-5 position-relative dark-overlay py-3 py-lg-7 overflow-hidden bannierDetail" style="background-image: url('img/fc78591da6fe5b5fa4e8620f06af2c28.jpg' )"></div>
-            <div class="col-12 col-md-6 border border-primary py-5" style="background-image: url('img/7c324a63d3763d5f31df29c66b645899.jpg' )"></div>
+            <div class="col-12 order-3 col-md-6 order-md-3 py-5 bannierDetail productImg" style="background-image: url('img/fc78591da6fe5b5fa4e8620f06af2c28.jpg' )">
+                <div class="row h-100">
+                    <div class="col-12 m-auto text-center p-5">
+                        <a href="{{ path('necklaces_products')}}" class="text-decoration-none text-white"><h3>Colliers</h3></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 order-4 col-md-6 order-md-4 py-5" style="background-color: #f6f3ef">
+                <div class="row h-100">
+                    <div class="col-6 m-auto text-center">
+                        <a href="#" class="text-decoration-none">
+                            <img src="img/e9088301b340ef0916dd5da4111c2eb5.jpg" class="img-fluid" alt="">
+                            <p>Je suis un titre</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -117,9 +149,21 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-4 border border-primary py-5 my-3"></div>
-            <div class="col-12 col-md-4 border border-primary py-5 my-3"></div>
-            <div class="col-12 col-md-4 border border-primary py-5 my-3"></div>
+            <div class="col-12 col-md-4 h-50 py-5 my-3">
+                <div class="p-5 h-50"style="background-image: url('img/wwwbabyamberteethingcouk-gb44a1fe51_1280.jpg')">
+                </div>
+
+            </div>
+            <div class="col-12 col-md-4 h-50 py-5 my-3">
+                <div class="p-5 h-50"style="background-image: url('img/wwwbabyamberteethingcouk-gb44a1fe51_1280.jpg')">
+                </div>
+
+            </div>
+            <div class="col-12 col-md-4 h-50 py-5 my-3">
+                <div class="p-5 h-50"style="background-image: url('img/wwwbabyamberteethingcouk-gb44a1fe51_1280.jpg')">
+                </div>
+
+            </div>
         </div>
     </div>
 </section>
