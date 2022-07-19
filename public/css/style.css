@@ -5,9 +5,9 @@
 #homeHeader{
     height: 80vh;
 }
-/* #carouselNewProduct{
+#carouselNewProduct{
     height: 500px;
-} */
+}
 .imgCarousel{
     max-height: 17em;
     min-height: 17em;
@@ -23,6 +23,10 @@
 }
 #productsHome .productImg{
     height: 680px;
+}
+.imgCategory{
+    height: 100%;
+   object-fit: cover;
 }
 
 /******************************
