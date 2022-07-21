@@ -28,6 +28,11 @@
     height: 100%;
    object-fit: cover;
 }
+.backgroundCategory{
+    background-repeat: round;
+    background-attachment: fixed;
+    background-size: contain;
+}
 
 /******************************
 *** SOUS-CATEGORIES DETAILS ***
@@ -51,3 +56,13 @@
     transform: scale(1.1, 1.1);
 }
 
+/******************************
+*** EXPOSITION ***
+******************************/
+
+.displayEvent{
+    display: inline-block;
+}
+.sizeDay{
+    font-size: 47px;
+}
