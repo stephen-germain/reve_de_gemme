@@ -56,12 +56,13 @@
     transform: scale(1.1, 1.1);
 }
 
-/******************************
+/*****************
 *** EXPOSITION ***
-******************************/
+*****************/
 
 .displayEvent{
     display: inline-block;
+    align-self: center;
 }
 .sizeDay{
     font-size: 47px;

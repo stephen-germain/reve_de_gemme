@@ -8,7 +8,7 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="container-fluid bannierDetail" style="background-image: url('img/pexels-karolina-grabowska-4040567.jpg' )">
+<div class="container-fluid bannierDetail" style="background-image: url('img/pexels-pixabay-87610.jpg' )">
     <div class="row justify-content-md-center">
         <div class="col-10">
             <div class="row p-5">
@@ -19,15 +19,15 @@
             <div class="row p-5">
             {% for exposition in expositions %}
                 <div class="col-12">
-                    <div class="row text-white">
+                    <div class="row text-white dateRow">
                         <div class="col-12 col-md-1 displayEvent text-start my-3 sizeDay">{{ exposition.day|date("d") }}</div>
                         <div class="col-12 col-md-2 displayEvent text-start my-3">{{ exposition.day|date("m/Y") }}</div>
-                        <div class="col-md-7 text-start">
+                        <div class="col-md-7 align-self-center text-start">
                             <div class="displayEvent my-3">{{ exposition.adresse}}</div>
                             <div class="displayEvent my-3">{{ exposition.city}}</div>
                             <div class="displayEvent my-3">{{ exposition.zipCode}}</div>
                         </div>
-                        <div class="col-md-2 text-start my-3">
+                        <div class="col-md-2 align-self-center text-start my-3">
                             <div class="displayEvent">{{ exposition.beginAt|date("H:i") }} - </div>
                             <div class="displayEvent">{{ exposition.endAt|date("H:i") }}</div>
                         </div>

@@ -26,7 +26,7 @@
                                 <h3>{{ bracelet.name }}</h3>
                                 {% for product in bracelet.products %}
                                     <a href="{{ path('app_product_details', {id:product.id})}}">
-                                        <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="..."> 
+                                        <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="{{ product.name }}"> 
                                         <div class="card-body">
                                             <h5 class="card-title">{{ product.name }}</h5>
                                         </div>
@@ -47,7 +47,7 @@
                                 <h3>{{ collier.name }}</h3>
                                 {% for product in collier.products %}
                                     <a href="{{ path('app_product_details', {id:product.id})}}">
-                                        <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="...">
+                                        <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="{{ product.name }}">
                                         <div class="card-body">
                                             <h5 class="card-title">{{ product.name }}</h5>
                                         </div>
@@ -68,7 +68,7 @@
                                 <h3>{{ pierre.name }}</h3>
                                 {% for product in pierre.products %}
                                     <a href="{{ path('app_product_details', {id:product.id})}}">
-                                        <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="...">
+                                        <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="{{ product.name }}">
                                         <div class="card-body">  
                                             <h5 class="card-title">{{ product.name }}</h5>
                                         </div>
