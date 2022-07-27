@@ -10,24 +10,28 @@
 
 <div class="container">
     <div class="row justify-content-md-center">
-        <div class="col-10">
-            <div class="row p-5">
-                <div class="col-4">
+        <div class="col-12 col-md-10 pb-3">
+            <div class="row p-5 pb-3">
+                <div class="col-12 col-md-4 text-center">
                     <h1>Les bracelets</h1>
                 </div>
             </div>
-            {% for bracelet in bracelets %}
-                {% if bracelet.parent != NULL %}
-                    <a href="{{ path('wristbands_details', {id:bracelet.id})}}">
-                        <div class="card bg-dark text-white">
-                            <img src="{{asset('img/' ~ bracelet.image )}}" alt="" class="card-img">
-                            <div class="card-img-overlay">
-                                <h5 class="card-title">{{ bracelet.name }}</h5> 
-                            </div>
+            <div class="row p-5">
+                {% for bracelet in bracelets %}
+                    {% if bracelet.parent != NULL %}
+                        <div class="col-12 col-md-4 p-3">
+                            <a href="{{ path('wristbands_details', {id:bracelet.id})}}">
+                                <div class="card bg-dark text-white card-product">
+                                    <img src="{{asset('img/' ~ bracelet.image )}}" alt="" class="card-img">
+                                    <div class="card-img-overlay">
+                                        <h5 class="card-title">{{ bracelet.name }}</h5> 
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                {% endif %}
-            {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>

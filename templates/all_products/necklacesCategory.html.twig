@@ -3,52 +3,31 @@
 {% block title %}Les colliers{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
 <div class="container">
     <div class="row justify-content-md-center">
-        <div class="col-10">
-            <div class="row p-5">
-                <div class="col-4">
+        <div class="col-12 col-md-10 pb-3">
+            <div class="row  pt-5 pb-3">
+                <div class="col-12 col-md-4 text-center">
                     <h1>Les colliers</h1>
                 </div>
             </div>
-            {# <div class="row p-5">
-                <div class="col-md-5">
-                    {% for collier in colliers %}
-                        {% if collier.parent == NULL %}
-                            <h3>{{ collier.name }}</h3>
-                        {% else %} 
-                            <div class="card col-3" style="width: 18rem;">
-                                <h3>{{ collier.name }}</h3>
-                                {% for product in collier.products %}
-                                    <a href="{{ path('app_product_details', {id:product.id})}}">
-                                        <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ product.name }}</h5>
-                                        </div>
-                                    </a>
-                                {% endfor %} 
-                            </div>
-                        {% endif %}
-                    {% endfor %} 
-                </div>
-            </div> #}
-            {% for collier in colliers %}
-                {% if collier.parent != NULL %}
-                    <a href="{{ path('necklaces_details', {id:collier.id})}}">
-                        <div class="card bg-dark text-white">
-                            <img src="{{asset('img/' ~ collier.image )}}" alt="" class="card-img">
-                            <div class="card-img-overlay">
-                                <h5 class="card-title">{{ collier.name }}</h5> 
-                            </div>
+             <div class="row p-5">
+                {% for collier in colliers %}
+                    {% if collier.parent != NULL %}
+                        <div class="col-12 col-md-4 p-3">
+                            <a href="{{ path('necklaces_details', {id:collier.id})}}">
+                                <div class="card bg-dark text-white card-product">
+                                    <img src="{{asset('img/' ~ collier.image )}}" alt="" class="card-img">
+                                    <div class="card-img-overlay">
+                                        <h5 class="card-title">{{ collier.name }}</h5> 
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                {% endif %}
-            {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>

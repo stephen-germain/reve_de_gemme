@@ -3,53 +3,32 @@
 {% block title %}Les minéraux{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
 <div class="container">
     <div class="row justify-content-md-center">
-        <div class="col-10">
-            <div class="row p-5">
-                <div class="col-4">
+        <div class="col-12 col-md-10 pb-3">
+            <div class="row pt-5 pb-3">
+                <div class="col-12 col-md-4 text-center">
                     <h1>Les minéraux</h1>
                 </div>
             </div>
-            {# <div class="row p-5">
-                <div class="col-md-5">
-                    {% for pierre in pierres %}
-                        {% if pierre.parent == NULL %}
-                            <h3>{{ pierre.name }}</h3>
-                        {% else %} 
-                            <div class="card col-3" style="width: 18rem;">
-                                <h3>{{ pierre.name }}</h3>
-                                {% for product in pierre.products %}
-                                    <a href="{{ path('app_product_details', {id:product.id})}}">
-                                        <img src="{{ asset('img/' ~ product.image)}}" class="card-img-top" alt="...">
-                                        <div class="card-body">  
-                                            <h5 class="card-title">{{ product.name }}</h5>
-                                        </div>
-                                    </a>
-                                {% endfor %}      
-                            </div>
+            <div class="row p-5">
+                {% for pierre in pierres %}
+                    {% if pierre.parent != NULL %}
+                        <div class="col-12 col-md-4 p-3">
+                            <a href="{{ path('minerals_details', {id:pierre.id})}}">
+                                <div class="card bg-dark text-white card-product">
+                                    <img src="{{asset('img/' ~ pierre.image )}}" alt="" class="card-img">
+                                    <div class="card-img-overlay">
+                                        <h5 class="card-title">{{ pierre.name }}</h5> 
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div> #}
-            {% for pierre in pierres %}
-                {% if pierre.parent != NULL %}
-                    <a href="{{ path('minerals_details', {id:pierre.id})}}">
-                        <div class="card bg-dark text-white">
-                            <img src="{{asset('img/' ~ pierre.image )}}" alt="" class="card-img">
-                            <div class="card-img-overlay">
-                                <h5 class="card-title">{{ pierre.name }}</h5> 
-                            </div>
-                        </div>
-                    </a>
-                {% endif %}
+                    {% endif %}
             {% endfor %}
+            </div>
+           
         </div>
     </div>
 </div>
