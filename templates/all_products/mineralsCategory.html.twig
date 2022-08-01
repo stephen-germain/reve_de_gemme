@@ -17,8 +17,8 @@
                     {% if pierre.parent != NULL %}
                         <div class="col-12 col-md-4 p-3">
                             <a href="{{ path('minerals_details', {id:pierre.id})}}">
-                                <div class="card bg-dark text-white card-product">
-                                    <img src="{{asset('img/' ~ pierre.image )}}" alt="" class="card-img">
+                                <div class="card bg-dark text-white card-product h-100">
+                                    <img src="{{asset('img/' ~ pierre.image )}}" alt="{{ pierre.name }}" class="card-img img-fluid imgCategory">
                                     <div class="card-img-overlay">
                                         <h5 class="card-title">{{ pierre.name }}</h5> 
                                     </div>
