@@ -2,18 +2,11 @@
 *** GENERAL ***
 **************/
 
-html{
-    min-height: 100%; 
- }
  body {
-   height: 100%;
-   display: flex;
-   flex-direction: column;
-   margin: 0!important;
- }
- body:after {
-     content: '';
-     flex: 1 1 auto;
+   min-height: 100vh; 
+   margin: 0; 
+   display: grid;
+   grid-template-rows: auto 1fr auto;
  }
  #buttonScrollTop{
    position: fixed;
@@ -36,11 +29,6 @@ html{
     color: #dddddd;
  }
  #buttonScrollTop:hover{
-   /*background-color: purple;
-   transform: scale3d(1, 1, 1);
-   border-radius: 20%;
-   transform: rotateY(150deg);*/
-   
    transform: translate(0px, -1.5vh);
    
  }
@@ -87,6 +75,15 @@ html{
     background-size: contain;
 }
 
+/*****************
+*** CATEGORIES ***
+*****************/
+
+.categoryImage{
+    height: 13em;
+    object-fit: cover;
+}
+
 /******************************
 *** SOUS-CATEGORIES DETAILS ***
 ******************************/
@@ -126,5 +123,7 @@ html{
 *************/
 
 .footer{
-    order: 1;
+    /* order: 1; */
+    min-height:50px; 
+    background:PapayaWhip;
 }
