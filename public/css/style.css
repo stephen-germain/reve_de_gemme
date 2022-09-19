@@ -70,9 +70,11 @@
     object-fit: cover;
 }
 .backgroundCategory{
-    background-repeat: round;
+    background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
+
 }
 
 /*****************
